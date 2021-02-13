@@ -9,10 +9,6 @@ import {Card} from '../../inteface/card-interface';
 })
 export class CardComponent implements OnInit {
   form: FormGroup;
-  title: string;
-  subtitle: string;
-  urlImage: string;
-  description: string;
   @Input() data: Card;
 
   constructor(
@@ -20,7 +16,9 @@ export class CardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.createFormValidation(this.data.input.length);
+    if (this.data.input){
+      this.createFormValidation(this.data.input.length);
+    }
   }
 
   Submit(): void{
@@ -33,7 +31,7 @@ export class CardComponent implements OnInit {
   createFormValidation(length: number): void{
     const arrayFormGroup: any = {};
     for (let i = 1; i  <= length; i++){
-      arrayFormGroup['input' + i ] = ['', Validators.required, Validators.maxLength(8)];
+      arrayFormGroup['input' + i ] = ['', [Validators.required, Validators.maxLength(8)]];
     }
     this.form = this.formBuilder.group(arrayFormGroup);
   }

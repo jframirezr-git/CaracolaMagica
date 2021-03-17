@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Card} from '../inteface/card-interface';
 
 @Component({
@@ -8,7 +8,9 @@ import {Card} from '../inteface/card-interface';
 })
 export class DashboardComponent implements OnInit {
   data: Card [] = [];
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit(): void {
     this.data[0] = {

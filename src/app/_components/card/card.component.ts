@@ -10,6 +10,7 @@ import {Card} from '../../inteface/card-interface';
 export class CardComponent implements OnInit {
   form: FormGroup;
   @Input() data: Card;
+  result: number;
 
   constructor(
     private formBuilder: FormBuilder
@@ -23,6 +24,11 @@ export class CardComponent implements OnInit {
   }
 
   Submit(): void {
+    const values = this.form.value;
+    // Formulas y procedimientos
+    if (this.data.title === 'Error Absoluto') {
+      this.result = values.input1 - values.input2;
+    }
   }
 
   getErrorMessage(): string {

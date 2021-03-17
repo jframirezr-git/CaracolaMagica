@@ -1,4 +1,7 @@
 <app-header></app-header>
-<div class="col-md-4">
-  <app-card [data]="data[0]"></app-card>
+<div class = "row">
+  <div class="col-md-4" *ngFor="let data of data">
+    <app-card [data]="data"></app-card>
+  </div>
 </div>
+

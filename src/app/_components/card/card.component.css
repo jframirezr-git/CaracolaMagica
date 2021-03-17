@@ -5,3 +5,9 @@
 .danger {
   color: red;
 }
+
+.img {
+  margin-left: 15%;
+  max-width: 250px;
+  max-height: 150px;
+}

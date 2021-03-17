@@ -3,7 +3,6 @@ export interface Card {
   subtitle: string;
   urlImage?: string;
   input?: string[];
-  scrBtn?: string;
   description: string;
 }
 

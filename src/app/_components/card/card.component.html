@@ -3,7 +3,7 @@
     <mat-card-title>{{data.title}}</mat-card-title>
     <mat-card-subtitle>{{data.subtitle}}</mat-card-subtitle>
   </mat-card-header>
-  <img mat-card-image src="{{data.urlImage}}" *ngIf="data.urlImage">
+  <img mat-card-image class="img" src="{{data.urlImage}}" *ngIf="data.urlImage">
   <mat-card-content>
     <div class="example-container">
       <form [formGroup]="form" (ngSubmit)="Submit()" *ngIf="data.input">
@@ -12,14 +12,12 @@
           <input matInput type="number" formControlName="input{{i+1}}" required>
         </mat-form-field>
         <span *ngIf="this.form.invalid" class="danger">{{getErrorMessage()}}</span>
-        <button mat-raised-button color="primary" type="submit" disabled="{{form.invalid}}">Primary</button>
+        <p>
+          {{data.description}}
+        </p>
+        <button mat-raised-button color="primary" type="submit" disabled="{{form.invalid}}">Calcular</button>
+        <p *ngIf="result">Resultado: {{result}}</p>
       </form>
     </div>
-    <p>
-      {{data.description}}
-    </p>
   </mat-card-content>
-  <mat-card-actions>
-    <button mat-raised-button color="primary" routerLink="{{data.scrBtn}}" *ngIf="data.scrBtn">Ingresar</button>
-  </mat-card-actions>
 </mat-card>

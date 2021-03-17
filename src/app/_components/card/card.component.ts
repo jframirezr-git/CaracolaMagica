@@ -27,10 +27,14 @@ export class CardComponent implements OnInit {
     const values = this.form.value;
     // Formulas y procedimientos
     if (this.data.title === 'Error Absoluto') {
-      this.result = values.input1 - values.input2;
+      this.result = this.errorAbsoluto(values.input1, values.input2);
     }
   }
 
+  errorAbsoluto(valorVerdadero: number, valorAproximado: number): number {
+    const result = valorVerdadero - valorAproximado;
+    return result;
+  }
   getErrorMessage(): string {
     return 'Los valores son obligatorios y no pueden ser mayores a 8 cifras';
   }

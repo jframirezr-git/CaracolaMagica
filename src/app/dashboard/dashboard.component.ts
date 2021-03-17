@@ -16,16 +16,24 @@ export class DashboardComponent implements OnInit {
     this.data = [{
       title: 'Error Absoluto',
       subtitle: 'Calculo del error absoluto',
-      urlImage: 'https://www.calculadoraconversor.com/wp-content/uploads/2017/10/calculadora-error-absoluto.jpg',
+      // urlImage: 'https://www.calculadoraconversor.com/wp-content/uploads/2017/10/calculadora-error-absoluto.jpg',
       description: 'Es la diferencia que existe entre el valor verdadero y el valor aproximado',
       input: ['Valor real', 'Valor aproximado']
     },
     {
-      title: 'Teoria de Errores',
-      subtitle: 'Muestra las formulas para la teoria de errores',
+      title: 'Error Relativo',
+      subtitle: 'Calculo error relativo',
       // urlImage: 'https://pbs.twimg.com/profile_images/2388108473/180px-DaConch_400x400.jpg',
-      description: 'Muestra las formulas para la teoria de errores,Muestra las formulas para la teoria de errores,Muestra las formulas para la teoria de errores',
-      input: ['exponente', 'x']
+      description: 'Expresa el error como proporción del valor verdadero, el error relativo es adimencional' +
+        ', por ende suele precentarse en forma de porcentaje',
+      input: ['Error', 'valor verdadero o aproximado']
+    },
+    {
+      title: 'Decimales correctos',
+      subtitle: 'Calculo los decimales correctos de un número',
+      // urlImage: 'https://pbs.twimg.com/profile_images/2388108473/180px-DaConch_400x400.jpg',
+      description: 'Se refiere a la cantidad de decimales correctos que contiene un número, (1 es verdadero, 2 es falso)',
+      input: ['X', 'X aproximado', 'Decimales correctos']
     }
     ];
 

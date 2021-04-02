@@ -33,8 +33,20 @@ export class CardComponent implements OnInit {
     if (this.data.title === 'Error Relativo'){
       this.result = this.errorRelativo(values.input1, values.input2);
     }
-    if (this.data.title === 'Decimales correctos'){
+    if (this.data.title === 'Decimales Correctos'){
       this.result = this.decimalesCorrectos(values.input1, values.input2, values.input3);
+      console.log(this.result);
+    }
+    if (this.data.title === 'Búsquedas'){
+      this.result = this.busquedas(values.input1, values.input2, values.input3);
+      console.log(this.result);
+    }
+    if (this.data.title === 'Bisección'){
+      this.result = this.biseccion(values.input1, values.input2, values.input3);
+      console.log(this.result);
+    }
+    if (this.data.title === 'Regla Falsa'){
+      this.result = this.reglaFalsa(values.input1, values.input2, values.input3);
       console.log(this.result);
     }
   }
@@ -54,6 +66,24 @@ export class CardComponent implements OnInit {
     const resultadoMayor = xAproximado + 0.5 * Math.pow(10, -(decimal));
     if (resultMenor <= x && x < resultadoMayor) { return 1; }
     else { return 2; }
+  }
+
+  // Pendiente de implementar
+  busquedas(f: number, i: number, d: number): number{
+    const result = f + i + d;
+    return result;
+  }
+
+  // Pendiente de implementar
+  biseccion(f: number, i: number, d: number): number{
+    const result = f + i + d;
+    return result;
+  }
+
+  // Pendiente de implementar
+  reglaFalsa(f: number, i: number, d: number): number{
+    const result = f + i + d;
+    return result;
   }
 
   getErrorMessage(): string {

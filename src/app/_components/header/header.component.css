@@ -1,3 +1,11 @@
 .example-spacer {
   flex: 1 1 auto;
 }
+
+span{
+  font-size: 25px;
+}
+
+img {
+  margin-left: 13px;
+}

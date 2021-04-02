@@ -1,23 +1,25 @@
 <mat-card class="example-card">
-  <mat-card-header>
-    <mat-card-title>{{data.title}}</mat-card-title>
-    <mat-card-subtitle>{{data.subtitle}}</mat-card-subtitle>
-  </mat-card-header>
+
+  <mat-card-title>{{data.title}}</mat-card-title>
+  <mat-card-subtitle>{{data.subtitle}}</mat-card-subtitle>
+
   <img mat-card-image class="img" src="{{data.urlImage}}" *ngIf="data.urlImage">
-  <mat-card-content>
-    <div class="example-container">
-      <form [formGroup]="form" (ngSubmit)="Submit()" *ngIf="data.input">
-        <mat-form-field appearance="fill" *ngFor="let input of data.input; let i=index">
-          <mat-label>{{data.input[i]}}</mat-label>
-          <input matInput type="number" formControlName="input{{i+1}}" required>
-        </mat-form-field>
+
+  <div class="example-container">
+    <form [formGroup]="form" (ngSubmit)="Submit()" *ngIf="data.input">
+      <mat-form-field appearance="fill" *ngFor="let input of data.input; let i=index" id="label">
+        <mat-label>{{data.input[i]}}</mat-label>
+        <input matInput type="number" formControlName="input{{i+1}}" required>
+      </mat-form-field>
+      <p>
         <span *ngIf="this.form.invalid" class="danger">{{getErrorMessage()}}</span>
-        <p>
-          {{data.description}}
-        </p>
-        <button mat-raised-button color="primary" type="submit" disabled="{{form.invalid}}">Calcular</button>
-        <p *ngIf="result">Resultado: {{result}}</p>
-      </form>
-    </div>
-  </mat-card-content>
+      </p>
+      <p>
+        {{data.description}}
+      </p>
+      <button mat-raised-button color="primary" type="submit" disabled="{{form.invalid}}">Calcular</button>
+      <p *ngIf="result">Resultado: {{result}}</p>
+    </form>
+  </div>
+
 </mat-card>

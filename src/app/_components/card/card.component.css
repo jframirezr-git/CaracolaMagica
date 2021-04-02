@@ -1,9 +1,19 @@
 .example-card {
   max-width: 400px;
+  height: 420px;
+  margin-bottom: 20px;
+  margin-left: 15px;
+  text-align: center;
+}
+
+#label {
+  text-align: center;
+  font-size: 12.8px;
 }
 
 .danger {
-  color: red;
+  color: #d04242;
+  font-size: 12.8px;
 }
 
 .img {

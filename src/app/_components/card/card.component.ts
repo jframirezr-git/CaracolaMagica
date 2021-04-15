@@ -49,6 +49,23 @@ export class CardComponent implements OnInit {
       this.result = this.reglaFalsa(values.input1, values.input2, values.input3);
       console.log(this.result);
     }
+    if (this.data.title === 'Punto fijo'){
+      this.result = this.puntofijo(values.input1, values.input2, values.input3);
+      console.log(this.result);
+    }
+    if (this.data.title === 'Newton'){
+      this.result = this.newton(values.input1, values.input2, values.input3);
+      console.log(this.result);
+    }
+
+    if (this.data.title === 'Secante'){
+      this.result = this.secante(values.input1, values.input2, values.input3);
+      console.log(this.result);
+    }
+    if (this.data.title === 'Raices multiples'){
+      this.result = this.raicesmlt(values.input1, values.input2, values.input3);
+      console.log(this.result);
+    }
   }
 
   errorAbsoluto(valorVerdadero: number, valorAproximado: number): number {
@@ -82,6 +99,30 @@ export class CardComponent implements OnInit {
 
   // Pendiente de implementar
   reglaFalsa(f: number, i: number, d: number): number{
+    const result = f + i + d;
+    return result;
+  }
+
+  // Pendiente de implementar
+  puntofijo(f: number, i: number, d: number): number{
+    const result = f + i + d;
+    return result;
+  }
+
+  // Pendiente de implementar
+  newton(f: number, i: number, d: number): number{
+    const result = f + i + d;
+    return result;
+  }
+
+  // Pendiente de implementar
+  secante(f: number, i: number, d: number): number{
+    const result = f + i + d;
+    return result;
+  }
+
+  // Pendiente de implementar
+  raicesmlt(f: number, i: number, d: number): number{
     const result = f + i + d;
     return result;
   }

@@ -55,7 +55,35 @@ export class DashboardComponent implements OnInit {
       // urlImage: 'https://pbs.twimg.com/profile_images/2388108473/180px-DaConch_400x400.jpg',
       description: 'Es un método cerrado que busca el punto medio del intervalo trazando una línea recta desde f(a) hasta f(b) y se toma como nuevo intervalo el lado donde está la raíz',
       input: ['Ecuación f(x)=0 ', 'Intervalo [a,b]', 'Incremento delta ∆x']
-    }
+    },
+      {
+        title: 'Punto fijo',
+        subtitle: 'Método de punto fijo',
+        // urlImage: 'https://pbs.twimg.com/profile_images/2388108473/180px-DaConch_400x400.jpg',
+        description: 'Es una cosa',
+        input: ['Ecuación f(x)=0 ', 'Intervalo [a,b]', 'Incremento delta ∆x']
+      },
+      {
+        title: 'Newton',
+        subtitle: 'Método de Newton',
+        // urlImage: 'https://pbs.twimg.com/profile_images/2388108473/180px-DaConch_400x400.jpg',
+        description: 'Es otra cosa',
+        input: ['Ecuación f(x)=0 ', 'Intervalo [a,b]', 'Incremento delta ∆x']
+      },
+      {
+        title: 'Secante',
+        subtitle: 'Método de la secante',
+        // urlImage: 'https://pbs.twimg.com/profile_images/2388108473/180px-DaConch_400x400.jpg',
+        description: 'Es algo',
+        input: ['Ecuación f(x)=0 ', 'Intervalo [a,b]', 'Incremento delta ∆x']
+      },
+      {
+        title: 'Raices multiples',
+        subtitle: 'Método de las raices multiples',
+        // urlImage: 'https://pbs.twimg.com/profile_images/2388108473/180px-DaConch_400x400.jpg',
+        description: 'Es eso',
+        input: ['Ecuación f(x)=0 ', 'Intervalo [a,b]', 'Incremento delta ∆x']
+      }
     ];
 
     console.log(this.data);

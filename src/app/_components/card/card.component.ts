@@ -142,7 +142,7 @@ export class CardComponent implements OnInit {
     const fa = math.evaluate(f.replace(/[xX]/g, '(' + String(a) + ')'));
     const fb = math.evaluate(f.replace(/[xX]/g, '(' + String(b) + ')'));
     let pm = (fb * a - fa * b) / (fb - fa);
-    const fpm = math.evaluate(f.replace(/[xX]/g, '*' + String(pm)));
+    const fpm = math.evaluate(f.replace(/[xX]/g, '(' + String(pm) + ')'));
     let e = 1000;
     let cont = 1;
     while (e > tol && cont < nMAX){
@@ -194,7 +194,7 @@ export class CardComponent implements OnInit {
     let fAct;
     while (e > tol && cont < nMax) {
       xAct = xAnt - fAnt / math.evaluate(String(df).replace(/[xX]/g, '(' + String(xAnt) + ')'));
-      fAct = math.evaluate(f.replace(/[xX]/g, '*' + String(xAct)));
+      fAct = math.evaluate(f.replace(/[xX]/g, '(' + String(xAct) + ')'));
       e = Math.abs(xAct - xAnt);
       cont++;
       xAnt = xAct;
@@ -216,7 +216,7 @@ export class CardComponent implements OnInit {
     let fAct;
     while (e > tol && cont < nMax){
       xAct = x1 - f1 * (x1 - x0) / (f1 - f0);
-      fAct = math.evaluate(f.replace(/[xX]/g, '*' + String(xAct)));
+      fAct = math.evaluate(f.replace(/[xX]/g, '(' + String(xAct) + ')'));
       e = Math.abs(xAct - x1);
       cont++;
       x0 = x1;

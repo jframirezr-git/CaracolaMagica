@@ -40,49 +40,50 @@ export class DashboardComponent implements OnInit {
       subtitle: 'Método de búsquedas incrementales',
       // urlImage: 'https://pbs.twimg.com/profile_images/2388108473/180px-DaConch_400x400.jpg',
       description: 'Se refiere a la búsqueda de aquellos subíntervalos en los que se garantiza la existencia de una raíz',
-      input: ['Ecuación f(x)=0 ', 'Intervalo [a,b]', 'Incremento delta ∆x']
+      input: ['Ecuación f(x)=0 ', 'Punto incial', 'Incremento delta ∆x', 'Numero maximo de interacciones']
     },
     {
       title: 'Bisección',
       subtitle: 'Método de la bisección',
       // urlImage: 'https://pbs.twimg.com/profile_images/2388108473/180px-DaConch_400x400.jpg',
       description: 'Es un método cerrado que divide el intervalo en la mitad y revisa a que lado quedó la raíz para obtener un nuevo intervalo',
-      input: ['Ecuación f(x)=0 ', 'Intervalo [a,b]', 'Incremento delta ∆x']
+      input: ['Ecuación f(x)=0 ', 'Intervalo [a]', 'Intervalo [b]', 'Tolerancia', 'Maximo de iteraciones' ]
     },
     {
       title: 'Regla Falsa',
       subtitle: 'Método de la regla falsa',
       // urlImage: 'https://pbs.twimg.com/profile_images/2388108473/180px-DaConch_400x400.jpg',
       description: 'Es un método cerrado que busca el punto medio del intervalo trazando una línea recta desde f(a) hasta f(b) y se toma como nuevo intervalo el lado donde está la raíz',
-      input: ['Ecuación f(x)=0 ', 'Intervalo [a,b]', 'Incremento delta ∆x']
+      input: ['Ecuación f(x)=0 ', 'Intervalo [a]', 'Intervalo [b]', 'Tolerancia', 'Maximo de iteraciones' ]
     },
       {
         title: 'Punto fijo',
         subtitle: 'Método de punto fijo',
         // urlImage: 'https://pbs.twimg.com/profile_images/2388108473/180px-DaConch_400x400.jpg',
-        description: 'Es una cosa',
-        input: ['Ecuación f(x)=0 ', 'Intervalo [a,b]', 'Incremento delta ∆x']
+        description: 'Este programa halla la solución a la ecuación f(x)=0 resolviendo el problema\n' +
+          'análogo x=g(x) usando el método de punto fijo. ',
+        input: ['Ecuación f(x)=0 ', 'Aproximaxion Inicial', 'Tolerancia', 'Maximo de iteraciones' ]
       },
       {
         title: 'Newton',
         subtitle: 'Método de Newton',
         // urlImage: 'https://pbs.twimg.com/profile_images/2388108473/180px-DaConch_400x400.jpg',
-        description: 'Es otra cosa',
-        input: ['Ecuación f(x)=0 ', 'Intervalo [a,b]', 'Incremento delta ∆x']
+        description: 'Este programa halla la solución a la ecuación f(x)=0 usando el método de Newton',
+        input: ['Ecuación f(x)=0 ', 'Aproximaxion Inicial', 'Tolerancia', 'Maximo de iteraciones' ]
       },
       {
         title: 'Secante',
         subtitle: 'Método de la secante',
         // urlImage: 'https://pbs.twimg.com/profile_images/2388108473/180px-DaConch_400x400.jpg',
-        description: 'Es algo',
-        input: ['Ecuación f(x)=0 ', 'Intervalo [a,b]', 'Incremento delta ∆x']
+        description: 'Este programa halla la solución a la ecuación f(x)=0 usando el método de la secante',
+        input: ['Ecuación f(x)=0 ', 'Aproximaxion Inicial', 'Aproximaxion Final', 'Tolerancia', 'Maximo de iteraciones' ]
       },
       {
         title: 'Raices multiples',
         subtitle: 'Método de las raices multiples',
         // urlImage: 'https://pbs.twimg.com/profile_images/2388108473/180px-DaConch_400x400.jpg',
-        description: 'Es eso',
-        input: ['Ecuación f(x)=0 ', 'Intervalo [a,b]', 'Incremento delta ∆x']
+        description: 'Este programa halla la solución a la ecuación f(x)=0 usando el método de raíces múltiples',
+        input: ['Ecuación f(x)=0 ', 'Aproximaxion Inicial', 'Tolerancia', 'Maximo de iteraciones' ]
       }
     ];
 

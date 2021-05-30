@@ -37,36 +37,54 @@ export class CardComponent implements OnInit {
     }
     if (this.data.title === 'Decimales Correctos'){
       this.result = this.decimalesCorrectos(values.input1, values.input2, values.input3);
-      console.log(this.result);
     }
     if (this.data.title === 'Búsquedas'){
       this.result = this.busquedas(values.input1, values.input2, values.input3, values.input4);
-      console.log(this.result);
     }
     if (this.data.title === 'Bisección'){
       this.result = this.biseccion(values.input1, values.input2, values.input3, values.input4, values.input5);
-      console.log(this.result);
     }
     if (this.data.title === 'Regla Falsa'){
       this.result = this.reglaFalsa(values.input1, values.input2, values.input3, values.input4, values.input5);
-      console.log(this.result);
     }
     if (this.data.title === 'Punto fijo'){
       this.result = this.puntofijo(values.input1, values.input2, values.input3, values.input4);
-      console.log(this.result);
     }
     if (this.data.title === 'Newton'){
       this.result = this.newton(values.input1, values.input2, values.input3, values.input4);
-      console.log(this.result);
     }
-
     if (this.data.title === 'Secante'){
       this.result = this.secante(values.input1, values.input2, values.input3, values.input4, values.input5);
-      console.log(this.result);
     }
     if (this.data.title === 'Raices multiples'){
       this.result = this.raicesmlt(values.input1, values.input2, values.input3, values.input4);
-      console.log(this.result);
+    }
+    if (this.data.title === 'Gaussiana simple'){
+      this.result = this.gausspl(values.input1, values.input2);
+    }
+    if (this.data.title === 'Gaussiana con pivoteo parcial'){
+      this.result = this.gausspar(values.input1, values.input2);
+    }
+    if (this.data.title === 'Gaussiana con pivoteo total'){
+      this.result = this.gausstot(values.input1, values.input2);
+    }
+    if (this.data.title === 'LU con eliminación gaussiana simple'){
+      this.result = this.lusimpl(values.input1, values.input2);
+    }
+    if (this.data.title === 'Jacobi'){
+      this.result = this.jacobi(values.input1, values.input2, values.input3, values.input4, values.ipnut5);
+    }
+    if (this.data.title === 'Gauss-Seidel'){
+      this.result = this.gseidel(values.input1, values.input2, values.input3, values.input4, values.ipnut5);
+    }
+    if (this.data.title === 'Vandermonde'){
+      this.result = this.vandermonde(values.input1, values.input2);
+    }
+    if (this.data.title === 'Diferencias divididas'){
+      this.result = this.difdivididas(values.input1, values.input2);
+    }
+    if (this.data.title === 'Splines'){
+      this.result = this.splines(values.input1, values.input2);
     }
   }
 
@@ -87,7 +105,6 @@ export class CardComponent implements OnInit {
     else { return String(2); }
   }
 
-  // Pendiente de implementar
   busquedas(f: string, x0: number, h: number, nMax: number): string{
     let i;
     let xAnt = x0;
@@ -104,14 +121,9 @@ export class CardComponent implements OnInit {
       fAct = math.evaluate(f.replace(/[xX]/g, '*' + String(xAct)));
     }
 
-    console.log(xAnt);
-    console.log(xAct);
-    console.log(i);
     return ('extremo izquierdo del intervalo = ' + xAnt + '\n' + ' Extremo derecho del intervalo = ' + xAct + '\n' + 'Iteraciones = ' + i);
   }
 
-
-  // Pendiente de implementar
   biseccion(f: string, a: number, b: number, tol: number, nMax: number): string{
     const fa = math.evaluate(f.replace(/[xX]/g, '(' + String(a) + ')'));
     let pm = (a + b) / 2;
@@ -130,14 +142,11 @@ export class CardComponent implements OnInit {
       e = Math.abs( pm - p0);
       cont++;
     }
-    console.log(pm);
-    console.log(cont);
-    console.log(e);
+
     return ('Solucion = ' + pm + '\n' + 'Iteraciones = ' + cont + '\n' + 'Error = ' + e);
 
   }
 
-  // Pendiente de implementar
   reglaFalsa(f: string, a: number, b: number, tol: number, nMAX: number): string{
     const fa = math.evaluate(f.replace(/[xX]/g, '(' + String(a) + ')'));
     const fb = math.evaluate(f.replace(/[xX]/g, '(' + String(b) + ')'));
@@ -159,13 +168,10 @@ export class CardComponent implements OnInit {
       e = Math.abs(pm - p0);
       cont++;
     }
-    console.log(pm);
-    console.log(cont);
-    console.log(e);
+
     return ('Solucion = ' + pm + '\n' + 'Iteraciones = ' + cont + '\n' + 'Error = ' + e);
   }
 
-  // Pendiente de implementar
   puntofijo(f: string, x0: number, tol: number, nMax: number): string{
     let xAnt = x0;
     let e = 1000;
@@ -177,13 +183,10 @@ export class CardComponent implements OnInit {
       cont++;
       xAnt = xAct;
     }
-    console.log(xAct);
-    console.log(cont);
-    console.log(e);
+
     return ('Solucion = ' + xAct + '\n' + ' Iteraciones = ' + cont + '\n' + 'Error = ' + e);
   }
 
-  // Pendiente de implementar
   newton(f: string, x0: number, tol: number, nMax: number): string{
     let xAnt = x0;
     let fAnt = math.evaluate(f.replace(/[xX]/g, '(' + String(xAnt) + ')'));
@@ -200,13 +203,10 @@ export class CardComponent implements OnInit {
       xAnt = xAct;
       fAnt = fAct;
     }
-    console.log(xAct);
-    console.log(cont);
-    console.log(e);
+
     return ('Solucion = ' + xAct + '\n' + 'Iteraciones = ' + cont + + '\n' + 'Error = ' + e);
   }
 
-  // Pendiente de implementar
   secante(f: string, x0: number, x1: number, tol: number, nMax: number): string{
     let f0 = math.evaluate(f.replace(/[xX]/g, '(' + String(x0) + ')'));
     let f1 = math.evaluate(f.replace(/[xX]/g, '(' + String(x1) + ')'));
@@ -224,13 +224,10 @@ export class CardComponent implements OnInit {
       x1 = xAct;
       f1 = fAct;
     }
-    console.log(xAct);
-    console.log(cont);
-    console.log(e);
+
     return ('Solucion = ' + xAct + + '\n' + 'Iteraciones = ' + cont + + '\n' + 'Error = ' + e);
   }
 
-  // Pendiente de implementar
   raicesmlt(f: string, x0: number, tol: number, nMax: number): string{
     let xAnt = x0;
     let fAnt = math.evaluate(f.replace(/[xX]/g, '(' + String(xAnt) + ')'));
@@ -251,10 +248,71 @@ export class CardComponent implements OnInit {
       xAnt = xAct;
       fAnt = fAct;
     }
-    console.log(xAct);
-    console.log(cont);
-    console.log(e);
+
     return ('Solucion = ' + xAct + '\n' + 'Iteraciones = ' + cont + '\n' + 'Error = ' + e);
+  }
+
+  gausspl(matrixI: string, vectorC: string): string {
+    const sep = matrixI.split(';');
+    const sep2 = [];
+    const c = vectorC.split(';');
+    for (let i = 0; i < sep.length; i++) {
+      sep2.push(sep[i].split(','));
+      sep2[i].push(c[i]);
+    }
+
+    for (let i = 0; i < sep2.length - 1; i++) {
+      for (let j = 0; j < sep[i].length - 1; j++) {
+        sep2[i][j] = parseInt(sep2[i][j], 10);
+      }
+    }
+
+    for (let i = 0; i < (sep2.length - 1); i++) {
+      for (let j = i + 1; j < sep2.length; j++) {
+        if (sep2[j][i] !== 0) {
+          const cons = sep2[j][i] / sep2[i][i];
+          for (let k = 0; k < sep2[i].length; k++) {
+            sep2[j][k] -= (sep2[i][k] * cons);
+          }
+        }
+      }
+    }
+
+    console.log(sep2);
+
+    return '[ ' + sep2 + ' ]';
+  }
+
+  gausspar(matrixI: string, vectorC: string): string {
+    return 'Pendiente';
+  }
+
+  gausstot(matrixI: string, vectorC: string): string {
+    return 'Pendiente';
+  }
+
+  lusimpl(matrixI: string, vectorC: string): string {
+    return 'Pendiente';
+  }
+
+  jacobi(matrixI: string, vectorC: string, x0: number, tol: number, nMax: number): string {
+    return 'Pendiente';
+  }
+
+  gseidel(matrixI: string, vectorC: string, x0: number, tol: number, nMax: number): string {
+    return 'Pendiente';
+  }
+
+  vandermonde(x: string, y: string): string {
+    return 'Pendiente';
+  }
+
+  difdivididas(x: string, y: string): string {
+    return 'Pendiente';
+  }
+
+  splines(x: string, y: string): string {
+    return 'Pendiente';
   }
 
   getErrorMessage(): string {

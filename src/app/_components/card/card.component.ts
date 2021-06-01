@@ -253,42 +253,88 @@ export class CardComponent implements OnInit {
   }
 
   gausspl(matrixI: string, vectorC: string): string {
-    const sep = matrixI.split(';');
-    const sep2 = [];
-    const c = vectorC.split(';');
-    for (let i = 0; i < sep.length; i++) {
-      sep2.push(sep[i].split(','));
-      sep2[i].push(c[i]);
-    }
+    const m = this.parseoMatriz(matrixI, vectorC);
 
-    for (let i = 0; i < sep2.length - 1; i++) {
-      for (let j = 0; j < sep[i].length - 1; j++) {
-        sep2[i][j] = parseInt(sep2[i][j], 10);
-      }
-    }
-
-    for (let i = 0; i < (sep2.length - 1); i++) {
-      for (let j = i + 1; j < sep2.length; j++) {
-        if (sep2[j][i] !== 0) {
-          const cons = sep2[j][i] / sep2[i][i];
-          for (let k = 0; k < sep2[i].length; k++) {
-            sep2[j][k] -= (sep2[i][k] * cons);
+    for (let i = 0; i < (m.length - 1); i++) {
+      for (let j = i + 1; j < m.length; j++) {
+        if (m[j][i] !== 0) {
+          const cons = m[j][i] / m[i][i];
+          for (let k = 0; k < m[i].length; k++) {
+            m[j][k] -= (m[i][k] * cons);
           }
         }
       }
     }
 
-    console.log(sep2);
+    console.log(m);
 
-    return '[ ' + sep2 + ' ]';
+    return '[ ' + m + ' ]';
   }
 
   gausspar(matrixI: string, vectorC: string): string {
-    return 'Pendiente';
+    let m = this.parseoMatriz(matrixI, vectorC);
+    let m2;
+
+    for (let i = 0; i < (m.length - 1); i++) {
+      let aux0 = m[i][i];
+      let aux = 0;
+
+      for (let j = i; j < m.length - 1; j++) {
+        if (m[j][i] < m[j + 1][i]) {
+          aux0 = m[j + 1][i];
+          aux = j + 1;
+        }
+      }
+
+      // console.log(aux0);
+      // console.log(aux0 + ' > ' + m[i][i]);
+      if (aux0 > Math.abs(m[i][i])) {
+        // console.log(m[aux]);
+        const aux2 = m[aux];
+        m[aux] = m[i];
+        m[i] = aux2;
+      }
+
+      /*
+      7 8 9 6
+      0 0.85 1.71 1.14
+      0 0.42 0.85 0.57
+
+      0.42 - (0.42/0.85) * 0.85
+       */
+
+      for (let q = 0; q < m.length - 1; q++) {
+        m = this.re(m, i);
+      }
+      // this.re(m, i);
+    }
+    console.log(m);
+
+    return '[ ' + m + ' ]';
+  }
+
+  // 7,8,9,6,
+  // 0,0.85,1.71,1.14,
+  // 0,5.551115123125783e-17,1.1102230246251565e-16,0
+
+  re(m: any[], i: number): any[] {
+    for (let l = i + 1; l < m.length; l++) {
+      if (m[l][i] !== 0) {
+        const cons = m[l][i] / m[i][i];
+        for (let k = 0; k < m[i].length; k++) {
+          m[l][k] -= (m[i][k] * cons);
+        }
+      }
+    }
+    return m;
   }
 
   gausstot(matrixI: string, vectorC: string): string {
-    return 'Pendiente';
+    const m = this.parseoMatriz(matrixI, vectorC);
+
+    console.log(m);
+
+    return '[ ' + m + ' ]';
   }
 
   lusimpl(matrixI: string, vectorC: string): string {
@@ -313,6 +359,24 @@ export class CardComponent implements OnInit {
 
   splines(x: string, y: string): string {
     return 'Pendiente';
+  }
+
+  parseoMatriz(matrixI: string, vectorC: string): any[] {
+    const sep = matrixI.split(';');
+    const sep2 = [];
+    const c = vectorC.split(';');
+    for (let i = 0; i < sep.length; i++) {
+      sep2.push(sep[i].split(','));
+      sep2[i].push(c[i]);
+    }
+
+    for (let i = 0; i < sep2.length; i++) {
+      for (let j = 0; j < sep[i].length - 1; j++) {
+        sep2[i][j] = parseFloat(sep2[i][j]);
+      }
+    }
+
+    return sep2;
   }
 
   getErrorMessage(): string {

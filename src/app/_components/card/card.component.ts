@@ -253,17 +253,10 @@ export class CardComponent implements OnInit {
   }
 
   gausspl(matrixI: string, vectorC: string): string {
-    const m = this.parseoMatriz(matrixI, vectorC);
+    let m = this.parseoMatriz(matrixI, vectorC);
 
     for (let i = 0; i < (m.length - 1); i++) {
-      for (let j = i + 1; j < m.length; j++) {
-        if (m[j][i] !== 0) {
-          const cons = m[j][i] / m[i][i];
-          for (let k = 0; k < m[i].length; k++) {
-            m[j][k] -= (m[i][k] * cons);
-          }
-        }
-      }
+      m = this.reduccion(m, i);
     }
 
     console.log(m);
@@ -273,7 +266,6 @@ export class CardComponent implements OnInit {
 
   gausspar(matrixI: string, vectorC: string): string {
     let m = this.parseoMatriz(matrixI, vectorC);
-    let m2;
 
     for (let i = 0; i < (m.length - 1); i++) {
       let aux0 = m[i][i];
@@ -286,38 +278,22 @@ export class CardComponent implements OnInit {
         }
       }
 
-      // console.log(aux0);
-      // console.log(aux0 + ' > ' + m[i][i]);
       if (aux0 > Math.abs(m[i][i])) {
-        // console.log(m[aux]);
         const aux2 = m[aux];
         m[aux] = m[i];
         m[i] = aux2;
       }
 
-      /*
-      7 8 9 6
-      0 0.85 1.71 1.14
-      0 0.42 0.85 0.57
-
-      0.42 - (0.42/0.85) * 0.85
-       */
-
       for (let q = 0; q < m.length - 1; q++) {
-        m = this.re(m, i);
+        m = this.reduccion(m, i);
       }
-      // this.re(m, i);
     }
     console.log(m);
 
     return '[ ' + m + ' ]';
   }
 
-  // 7,8,9,6,
-  // 0,0.85,1.71,1.14,
-  // 0,5.551115123125783e-17,1.1102230246251565e-16,0
-
-  re(m: any[], i: number): any[] {
+  reduccion(m: any[], i: number): any[] {
     for (let l = i + 1; l < m.length; l++) {
       if (m[l][i] !== 0) {
         const cons = m[l][i] / m[i][i];
@@ -331,6 +307,25 @@ export class CardComponent implements OnInit {
 
   gausstot(matrixI: string, vectorC: string): string {
     const m = this.parseoMatriz(matrixI, vectorC);
+
+    let cambi = [];
+
+    for (let i = 0; i < (m.length); i++) {
+
+      let a;
+      let b;
+
+      for (let j = i; j < m.length; j++) {
+        for (let k = i; k < m[j].length - 1; k++) {
+          console.log(m[j][k]);
+        }
+        if ((m[i][m[i].length - 1] + i - 1) !== i) {
+          console.log(i, (m[i][m[i].length - 1]) + i - 1);
+        }
+      }
+    }
+
+    // m = this.reduccion(m, i);
 
     console.log(m);
 
@@ -370,11 +365,11 @@ export class CardComponent implements OnInit {
       sep2[i].push(c[i]);
     }
 
-    for (let i = 0; i < sep2.length; i++) {
+    /* for (let i = 0; i < sep2.length; i++) {
       for (let j = 0; j < sep[i].length - 1; j++) {
         sep2[i][j] = parseFloat(sep2[i][j]);
       }
-    }
+    } */
 
     return sep2;
   }

@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Card} from '../../inteface/card-interface';
-import {wrapFunctionExpressionsInParens} from '@angular/compiler-cli/src/ngtsc/annotations/src/util';
+import { MetodosNumericosService } from '../../_services/metodos-numericos.service';
 import * as math from 'mathjs';
 
 @Component({
@@ -12,10 +12,12 @@ import * as math from 'mathjs';
 export class CardComponent implements OnInit {
   form: FormGroup;
   @Input() data: Card;
-  result: string;
+  resultJS: string;
+  resultPython: string;
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private metodosNum: MetodosNumericosService
   ) {
   }
 
@@ -30,82 +32,130 @@ export class CardComponent implements OnInit {
     // Formulas y procedimientos
     console.log(values);
     if (this.data.title === 'Error Absoluto') {
-      this.result = this.errorAbsoluto(values.input1, values.input2);
+      this.resultJS = this.errorAbsoluto(values.input1, values.input2);
     }
     if (this.data.title === 'Error Relativo'){
-      this.result = this.errorRelativo(values.input1, values.input2);
+      this.resultJS = this.errorRelativo(values.input1, values.input2);
     }
     if (this.data.title === 'Decimales Correctos'){
-      this.result = this.decimalesCorrectos(values.input1, values.input2, values.input3);
+      this.resultJS = this.decimalesCorrectos(values.input1, values.input2, values.input3);
     }
     if (this.data.title === 'Búsquedas'){
-      this.result = this.busquedas(values.input1, values.input2, values.input3, values.input4);
+      this.resultJS = this.busquedas(values.input1, values.input2, values.input3, values.input4);
     }
     if (this.data.title === 'Bisección'){
-      this.result = this.biseccion(values.input1, values.input2, values.input3, values.input4, values.input5);
+      this.resultJS = this.biseccion(values.input1, values.input2, values.input3, values.input4, values.input5);
     }
     if (this.data.title === 'Regla Falsa'){
-      this.result = this.reglaFalsa(values.input1, values.input2, values.input3, values.input4, values.input5);
+      this.resultJS = this.reglaFalsa(values.input1, values.input2, values.input3, values.input4, values.input5);
     }
     if (this.data.title === 'Punto fijo'){
-      this.result = this.puntofijo(values.input1, values.input2, values.input3, values.input4);
+      this.resultJS = this.puntofijo(values.input1, values.input2, values.input3, values.input4);
     }
     if (this.data.title === 'Newton'){
-      this.result = this.newton(values.input1, values.input2, values.input3, values.input4);
+      this.resultJS = this.newton(values.input1, values.input2, values.input3, values.input4);
     }
     if (this.data.title === 'Secante'){
-      this.result = this.secante(values.input1, values.input2, values.input3, values.input4, values.input5);
+      this.resultJS = this.secante(values.input1, values.input2, values.input3, values.input4, values.input5);
     }
     if (this.data.title === 'Raices multiples'){
-      this.result = this.raicesmlt(values.input1, values.input2, values.input3, values.input4);
+      this.resultJS = this.raicesmlt(values.input1, values.input2, values.input3, values.input4);
     }
     if (this.data.title === 'Gaussiana simple'){
-      this.result = this.gausspl(values.input1, values.input2);
+      this.resultJS = this.gausspl(values.input1, values.input2);
     }
     if (this.data.title === 'Gaussiana con pivoteo parcial'){
-      this.result = this.gausspar(values.input1, values.input2);
+      this.resultJS = this.gausspar(values.input1, values.input2);
     }
     if (this.data.title === 'Gaussiana con pivoteo total'){
-      this.result = this.gausstot(values.input1, values.input2);
+      this.resultJS = this.gausstot(values.input1, values.input2);
     }
     if (this.data.title === 'LU con eliminación gaussiana simple'){
-      this.result = this.lusimpl(values.input1, values.input2);
+      this.resultJS = this.lusimpl(values.input1, values.input2);
     }
     if (this.data.title === 'Jacobi'){
-      this.result = this.jacobi(values.input1, values.input2, values.input3, values.input4, values.ipnut5);
+      this.resultJS = this.jacobi(values.input1, values.input2, values.input3, values.input4, values.ipnut5);
     }
     if (this.data.title === 'Gauss-Seidel'){
-      this.result = this.gseidel(values.input1, values.input2, values.input3, values.input4, values.ipnut5);
+      this.resultJS = this.gseidel(values.input1, values.input2, values.input3, values.input4, values.ipnut5);
     }
     if (this.data.title === 'Vandermonde'){
-      this.result = this.vandermonde(values.input1, values.input2);
+      this.resultJS = this.vandermonde(values.input1, values.input2);
     }
     if (this.data.title === 'Diferencias divididas'){
-      this.result = this.difdivididas(values.input1, values.input2);
+      this.resultJS = this.difdivididas(values.input1, values.input2);
     }
     if (this.data.title === 'Splines'){
-      this.result = this.splines(values.input1, values.input2);
+      this.resultJS = this.splines(values.input1, values.input2);
     }
   }
 
+
   errorAbsoluto(valorVerdadero: number, valorAproximado: number): string {
+    const param = {
+      x1: valorVerdadero,
+      x2: valorAproximado
+    };
+    this.metodosNum.absolute(param).subscribe(
+      res => {
+        this.resultPython = String(res.error);
+      },
+      err => {
+        console.log(err);
+      }
+    );
+
     const result = valorVerdadero - valorAproximado;
+
     return String(result);
   }
 
-  errorRelativo(Error: number, valor: number): string {
-    const result = Error / valor;
+  errorRelativo(error: number, valor: number): string {
+    const param = {
+      error: error,
+      x: valor
+    };
+    this.metodosNum.relative(param).subscribe(
+      res => {
+        this.resultPython = String(res.error);
+      },
+      err => {
+        console.log(err);
+      }
+    );
+
+    const result = error / valor;
+
     return String(result);
   }
 
-  decimalesCorrectos(x: number, xAproximado: number, decimal: number): string{
+  decimalesCorrectos(x: number, xAproximado: number, decimal: number): string {
+    const param = {
+      x1: x,
+      x2: xAproximado,
+      decimal: decimal
+    };
+    this.metodosNum.decimals(param).subscribe(
+      res => {
+        this.resultPython = String(res.correct);
+      },
+      err => {
+        console.log(err);
+      }
+    );
+
     const resultMenor = xAproximado - 0.5 * Math.pow(10, -(decimal));
     const resultadoMayor = xAproximado + 0.5 * Math.pow(10, -(decimal));
-    if (resultMenor <= x && x < resultadoMayor) { return String(1); }
-    else { return String(2); }
+
+    if (resultMenor <= x && x < resultadoMayor) {
+      return String(1);
+    }
+    else {
+      return String(2);
+    }
   }
 
-  busquedas(f: string, x0: number, h: number, nMax: number): string{
+  busquedas(f: string, x0: number, h: number, nMax: number): string {
     let i;
     let xAnt = x0;
     let xAct = xAnt + h;
@@ -124,7 +174,26 @@ export class CardComponent implements OnInit {
     return ('extremo izquierdo del intervalo = ' + xAnt + '\n' + ' Extremo derecho del intervalo = ' + xAct + '\n' + 'Iteraciones = ' + i);
   }
 
-  biseccion(f: string, a: number, b: number, tol: number, nMax: number): string{
+  biseccion(f: string, a: number, b: number, tol: number, nMax: number): string {
+    const param = {
+      f: f,
+      a: a,
+      b: b,
+      N: nMax
+    };
+    this.metodosNum.bisections(param).subscribe(
+      res => {
+        if (res.correct) {
+          this.resultPython = String(res.result);
+        } else {
+          this.resultPython = 'No';
+        }
+      },
+      error => {
+        console.log(error);
+      }
+    );
+
     const fa = math.evaluate(f.replace(/[xX]/g, '(' + String(a) + ')'));
     let pm = (a + b) / 2;
     let fpm = math.evaluate(f.replace(/[xX]/g, '(' + String(pm) + ')'));
@@ -147,7 +216,7 @@ export class CardComponent implements OnInit {
 
   }
 
-  reglaFalsa(f: string, a: number, b: number, tol: number, nMAX: number): string{
+  reglaFalsa(f: string, a: number, b: number, tol: number, nMAX: number): string {
     const fa = math.evaluate(f.replace(/[xX]/g, '(' + String(a) + ')'));
     const fb = math.evaluate(f.replace(/[xX]/g, '(' + String(b) + ')'));
     let pm = (fb * a - fa * b) / (fb - fa);
@@ -172,7 +241,7 @@ export class CardComponent implements OnInit {
     return ('Solucion = ' + pm + '\n' + 'Iteraciones = ' + cont + '\n' + 'Error = ' + e);
   }
 
-  puntofijo(f: string, x0: number, tol: number, nMax: number): string{
+  puntofijo(f: string, x0: number, tol: number, nMax: number): string {
     let xAnt = x0;
     let e = 1000;
     let cont = 0;
@@ -187,7 +256,7 @@ export class CardComponent implements OnInit {
     return ('Solucion = ' + xAct + '\n' + ' Iteraciones = ' + cont + '\n' + 'Error = ' + e);
   }
 
-  newton(f: string, x0: number, tol: number, nMax: number): string{
+  newton(f: string, x0: number, tol: number, nMax: number): string {
     let xAnt = x0;
     let fAnt = math.evaluate(f.replace(/[xX]/g, '(' + String(xAnt) + ')'));
     const df = math.derivative(f, 'x');
@@ -204,10 +273,30 @@ export class CardComponent implements OnInit {
       fAnt = fAct;
     }
 
+    const param = {
+      f: f,
+      df: df,
+      x0: x0,
+      epsilon: tol,
+      max_iter: nMax
+    };
+    this.metodosNum.newtons(param).subscribe(
+      res => {
+        if (res.correct) {
+          this.resultPython = String(res.result);
+        } else {
+          this.resultPython = 'No';
+        }
+      },
+      err => {
+        console.log(err);
+      }
+    );
+
     return ('Solucion = ' + xAct + '\n' + 'Iteraciones = ' + cont + + '\n' + 'Error = ' + e);
   }
 
-  secante(f: string, x0: number, x1: number, tol: number, nMax: number): string{
+  secante(f: string, x0: number, x1: number, tol: number, nMax: number): string {
     let f0 = math.evaluate(f.replace(/[xX]/g, '(' + String(x0) + ')'));
     let f1 = math.evaluate(f.replace(/[xX]/g, '(' + String(x1) + ')'));
     let e = 1000;
@@ -228,7 +317,7 @@ export class CardComponent implements OnInit {
     return ('Solucion = ' + xAct + + '\n' + 'Iteraciones = ' + cont + + '\n' + 'Error = ' + e);
   }
 
-  raicesmlt(f: string, x0: number, tol: number, nMax: number): string{
+  raicesmlt(f: string, x0: number, tol: number, nMax: number): string {
     let xAnt = x0;
     let fAnt = math.evaluate(f.replace(/[xX]/g, '(' + String(xAnt) + ')'));
     let e = 1000;
@@ -308,12 +397,11 @@ export class CardComponent implements OnInit {
   gausstot(matrixI: string, vectorC: string): string {
     const m = this.parseoMatriz(matrixI, vectorC);
 
-    let cambi = [];
+    // let cambi = [];
 
     for (let i = 0; i < (m.length); i++) {
 
-      let a;
-      let b;
+      // let a;let b;
 
       for (let j = i; j < m.length; j++) {
         for (let k = i; k < m[j].length - 1; k++) {

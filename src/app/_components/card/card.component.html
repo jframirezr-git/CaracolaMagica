@@ -18,7 +18,8 @@
         {{data.description}}
       </p>
       <button mat-raised-button color="primary" type="submit" disabled="{{form.invalid}}">Calcular</button>
-      <p *ngIf="result" style="margin-top: 8px">Resultado: {{result}}</p>
+      <p *ngIf="resultJS" style="margin-top: 8px">Resultado JS: {{resultJS}}</p>
+      <p *ngIf="resultPython" style="margin-top: 8px">Resultado Python: {{resultPython}}</p>
     </form>
   </div>
 

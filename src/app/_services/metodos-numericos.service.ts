@@ -20,6 +20,7 @@ export class MetodosNumericosService {
   jacbob = environment.BASE_URL + '/jacobi';
   gaussimple = environment.BASE_URL + '/gauss';
   gaussparcial = environment.BASE_URL + '/gausspi';
+  gausstotal = environment.BASE_URL + '/gaussto';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -114,6 +115,14 @@ export class MetodosNumericosService {
 
   gaussprc(param): any {
     return this.http.post(this.gaussparcial, param , this.httpOptions)
+      .pipe(
+        map(this.extractData),
+        catchError(this.errorHandl)
+      );
+  }
+
+  gaussttl(param): any {
+    return this.http.post(this.gausstotal, param , this.httpOptions)
       .pipe(
         map(this.extractData),
         catchError(this.errorHandl)

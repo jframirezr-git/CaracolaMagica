@@ -34,58 +34,58 @@ export class CardComponent implements OnInit {
     if (this.data.title === 'Absolute error') {
       this.resultJS = this.errorAbsoluto(values.input1, values.input2);
     }
-    if (this.data.title === 'Relative error'){
+    if (this.data.title === 'Relative error') {
       this.resultJS = this.errorRelativo(values.input1, values.input2);
     }
-    if (this.data.title === 'Correct decimals'){
+    if (this.data.title === 'Correct decimals') {
       this.resultJS = this.decimalesCorrectos(values.input1, values.input2, values.input3);
     }
-    if (this.data.title === 'Incremental searches'){
+    if (this.data.title === 'Incremental searches') {
       this.resultJS = this.busquedas(values.input1, values.input2, values.input3, values.input4);
     }
-    if (this.data.title === 'Bisección'){
+    if (this.data.title === 'Bisección') {
       this.resultJS = this.biseccion(values.input1, values.input2, values.input3, values.input4, values.input5);
     }
-    if (this.data.title === 'False rule'){
+    if (this.data.title === 'False rule') {
       this.resultJS = this.reglaFalsa(values.input1, values.input2, values.input3, values.input4, values.input5);
     }
-    if (this.data.title === 'Fixed point'){
+    if (this.data.title === 'Fixed point') {
       this.resultJS = this.puntofijo(values.input1, values.input2, values.input3, values.input4);
     }
-    if (this.data.title === 'Newton'){
+    if (this.data.title === 'Newton') {
       this.resultJS = this.newton(values.input1, values.input2, values.input3, values.input4);
     }
-    if (this.data.title === 'Secant'){
+    if (this.data.title === 'Secant') {
       this.resultJS = this.secante(values.input1, values.input2, values.input3, values.input4, values.input5);
     }
-    if (this.data.title === 'Multiple roots'){
+    if (this.data.title === 'Multiple roots') {
       this.resultJS = this.raicesmlt(values.input1, values.input2, values.input3, values.input4);
     }
-    if (this.data.title === 'Simple Gaussian elimination'){
+    if (this.data.title === 'Simple Gaussian elimination') {
       this.resultJS = this.gausspl(values.input1, values.input2);
     }
-    if (this.data.title === 'Gaussian elimination with partial pivot'){
+    if (this.data.title === 'Gaussian elimination with partial pivot') {
       this.resultJS = this.gausspar(values.input1, values.input2);
     }
-    if (this.data.title === 'Gaussian elimination with complete pivot'){
+    if (this.data.title === 'Gaussian elimination with complete pivot') {
       this.resultJS = this.gausstot(values.input1, values.input2);
     }
-    if (this.data.title === 'LU factorization with simple Gaussian elimination'){
+    if (this.data.title === 'LU factorization with simple Gaussian elimination') {
       this.resultJS = this.lusimpl(values.input1, values.input2);
     }
-    if (this.data.title === 'Jacobi'){
+    if (this.data.title === 'Jacobi') {
       this.resultJS = this.jacobi(values.input1, values.input2, values.input3, values.input4, values.ipnut5);
     }
-    if (this.data.title === 'Gauss-Seidel'){
+    if (this.data.title === 'Gauss-Seidel') {
       this.resultJS = this.gseidel(values.input1, values.input2, values.input3, values.input4, values.ipnut5);
     }
-    if (this.data.title === 'Vandermonde'){
+    if (this.data.title === 'Vandermonde') {
       this.resultJS = this.vandermonde(values.input1, values.input2);
     }
-    if (this.data.title === 'Divided differences'){
+    if (this.data.title === 'Divided differences') {
       this.resultJS = this.difdivididas(values.input1, values.input2);
     }
-    if (this.data.title === 'Splines'){
+    if (this.data.title === 'Splines') {
       this.resultJS = this.splines(values.input1, values.input2);
     }
   }

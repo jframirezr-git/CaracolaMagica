@@ -91,14 +91,16 @@ export class CardComponent implements OnInit {
   }
 
 
-  errorAbsoluto(valorVerdadero: number, valorAproximado: number): string {
+  errorAbsoluto(valorVerdaderoP: string, valorAproximadoP: string): string {
+    const valorVerdadero = parseFloat(valorVerdaderoP);
+    const valorAproximado = parseFloat(valorAproximadoP);
+
     const param = {
       x1: valorVerdadero,
       x2: valorAproximado
     };
     this.metodosNum.absolute(param).subscribe(
       res => {
-        console.log(res);
         this.resultPython = String(res.error);
       },
       err => {
@@ -111,7 +113,10 @@ export class CardComponent implements OnInit {
     return String(result);
   }
 
-  errorRelativo(error: number, valor: number): string {
+  errorRelativo(errorP: string, valorP: string): string {
+    const error = parseFloat(errorP);
+    const valor = parseFloat(valorP);
+
     const param = {
       error: error,
       x: valor
@@ -130,7 +135,11 @@ export class CardComponent implements OnInit {
     return String(result);
   }
 
-  decimalesCorrectos(x: number, xAproximado: number, decimal: number): string {
+  decimalesCorrectos(xP: string, xAproximadoP: string, decimalP: string): string {
+    const x = parseFloat(xP);
+    const xAproximado = parseFloat(xAproximadoP);
+    const  decimal = parseFloat(decimalP);
+
     const param = {
       x1: x,
       x2: xAproximado,
@@ -156,7 +165,11 @@ export class CardComponent implements OnInit {
     }
   }
 
-  busquedas(f: string, x0: number, h: number, nMax: number): string {
+  busquedas(f: string, x0P: string, hP: string, nMaxP: string): string {
+    const x0 = parseFloat(x0P);
+    const h = parseFloat(hP);
+    const nMax = parseFloat(nMaxP);
+
     let i;
     let xAnt = x0;
     let xAct = xAnt + h;
@@ -175,7 +188,12 @@ export class CardComponent implements OnInit {
     return ('extremo izquierdo del intervalo = ' + xAnt + '\n' + ' Extremo derecho del intervalo = ' + xAct + '\n' + 'Iteraciones = ' + i);
   }
 
-  biseccion(f: string, a: number, b: number, tol: number, nMax: number): string {
+  biseccion(f: string, aP: string, bP: string, tolP: string, nMaxP: string): string {
+    let a = parseFloat(aP);
+    let b = parseFloat(bP);
+    const tol = parseFloat(tolP);
+    const nMax = parseFloat(nMaxP);
+
     const param = {
       f: f,
       a: a,
@@ -217,14 +235,19 @@ export class CardComponent implements OnInit {
 
   }
 
-  reglaFalsa(f: string, a: number, b: number, tol: number, nMAX: number): string {
+  reglaFalsa(f: string, aP: string, bP: string, tolP: string, nMaxP: string): string {
+    let a = parseFloat(aP);
+    let b = parseFloat(bP);
+    const tol = parseFloat(tolP);
+    const nMax = parseFloat(nMaxP);
+
     const fa = math.evaluate(f.replace(/[xX]/g, '(' + String(a) + ')'));
     const fb = math.evaluate(f.replace(/[xX]/g, '(' + String(b) + ')'));
     let pm = (fb * a - fa * b) / (fb - fa);
     const fpm = math.evaluate(f.replace(/[xX]/g, '(' + String(pm) + ')'));
     let e = 1000;
     let cont = 1;
-    while (e > tol && cont < nMAX){
+    while (e > tol && cont < nMax){
       if (fa * fpm < 0){
         b = pm;
       }else{
@@ -242,7 +265,11 @@ export class CardComponent implements OnInit {
     return ('Solucion = ' + pm + '\n' + 'Iteraciones = ' + cont + '\n' + 'Error = ' + e);
   }
 
-  puntofijo(f: string, x0: number, tol: number, nMax: number): string {
+  puntofijo(f: string, x0P: string, tolP: string, nMaxP: string): string {
+    const x0 = parseFloat(x0P);
+    const tol = parseFloat(tolP);
+    const nMax = parseFloat(nMaxP);
+
     let xAnt = x0;
     let e = 1000;
     let cont = 0;
@@ -257,7 +284,11 @@ export class CardComponent implements OnInit {
     return ('Solucion = ' + xAct + '\n' + ' Iteraciones = ' + cont + '\n' + 'Error = ' + e);
   }
 
-  newton(f: string, x0: number, tol: number, nMax: number): string {
+  newton(f: string, x0P: string, tolP: string, nMaxP: string): string {
+    const x0 = parseFloat(x0P);
+    const tol = parseFloat(tolP);
+    const nMax = parseFloat(nMaxP);
+
     let xAnt = x0;
     let fAnt = math.evaluate(f.replace(/[xX]/g, '(' + String(xAnt) + ')'));
     const df = math.derivative(f, 'x');
@@ -297,7 +328,12 @@ export class CardComponent implements OnInit {
     return ('Solucion = ' + xAct + '\n' + 'Iteraciones = ' + cont + + '\n' + 'Error = ' + e);
   }
 
-  secante(f: string, x0: number, x1: number, tol: number, nMax: number): string {
+  secante(f: string, x0P: string, x1P: string, tolP: string, nMaxP: string): string {
+    let x0 = parseFloat(x0P);
+    let x1 = parseFloat(x1P);
+    const tol = parseFloat(tolP);
+    const nMax = parseFloat(nMaxP);
+
     let f0 = math.evaluate(f.replace(/[xX]/g, '(' + String(x0) + ')'));
     let f1 = math.evaluate(f.replace(/[xX]/g, '(' + String(x1) + ')'));
     let e = 1000;
@@ -318,7 +354,11 @@ export class CardComponent implements OnInit {
     return ('Solucion = ' + xAct + + '\n' + 'Iteraciones = ' + cont + + '\n' + 'Error = ' + e);
   }
 
-  raicesmlt(f: string, x0: number, tol: number, nMax: number): string {
+  raicesmlt(f: string, x0P: string, tolP: string, nMaxP: string): string {
+    const x0 = parseFloat(x0P);
+    const tol = parseFloat(tolP);
+    const nMax = parseFloat(nMaxP);
+
     let xAnt = x0;
     let fAnt = math.evaluate(f.replace(/[xX]/g, '(' + String(xAnt) + ')'));
     let e = 1000;
@@ -425,11 +465,11 @@ export class CardComponent implements OnInit {
     return 'Pendiente';
   }
 
-  jacobi(matrixI: string, vectorC: string, x0: number, tol: number, nMax: number): string {
+  jacobi(matrixI: string, vectorC: string, x0: string, tol: string, nMax: string): string {
     return 'Pendiente';
   }
 
-  gseidel(matrixI: string, vectorC: string, x0: number, tol: number, nMax: number): string {
+  gseidel(matrixI: string, vectorC: string, x0: string, tol: string, nMax: string): string {
     return 'Pendiente';
   }
 

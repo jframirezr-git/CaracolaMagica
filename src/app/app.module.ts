@@ -9,6 +9,8 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {HeaderComponent} from './_components/header/header.component';
 import {CardComponent} from './_components/card/card.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {MetodosNumericosService} from '../app/_services/metodos-numericos.service';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,9 +24,10 @@ import {ReactiveFormsModule} from '@angular/forms';
     BrowserAnimationsModule,
     AppRoutingModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [MetodosNumericosService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

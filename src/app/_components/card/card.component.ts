@@ -98,6 +98,7 @@ export class CardComponent implements OnInit {
     };
     this.metodosNum.absolute(param).subscribe(
       res => {
+        console.log(res);
         this.resultPython = String(res.error);
       },
       err => {

@@ -18,6 +18,8 @@ export class MetodosNumericosService {
   newton = environment.BASE_URL + '/newton';
   secante = environment.BASE_URL + '/secant';
   jacbob = environment.BASE_URL + '/jacobi';
+  gaussimple = environment.BASE_URL + '/gauss';
+  gaussparcial = environment.BASE_URL + '/gausspi';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -96,6 +98,22 @@ export class MetodosNumericosService {
 
   secants(param): any {
     return this.http.post(this.secante, param , this.httpOptions)
+      .pipe(
+        map(this.extractData),
+        catchError(this.errorHandl)
+      );
+  }
+
+  gaussplm(param): any {
+    return this.http.post(this.gaussimple, param , this.httpOptions)
+      .pipe(
+        map(this.extractData),
+        catchError(this.errorHandl)
+      );
+  }
+
+  gaussprc(param): any {
+    return this.http.post(this.gaussparcial, param , this.httpOptions)
       .pipe(
         map(this.extractData),
         catchError(this.errorHandl)

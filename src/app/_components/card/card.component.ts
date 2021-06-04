@@ -31,46 +31,46 @@ export class CardComponent implements OnInit {
     const values = this.form.value;
     // Formulas y procedimientos
     console.log(values);
-    if (this.data.title === 'Error Absoluto') {
+    if (this.data.title === 'Absolute error') {
       this.resultJS = this.errorAbsoluto(values.input1, values.input2);
     }
-    if (this.data.title === 'Error Relativo'){
+    if (this.data.title === 'Relative error'){
       this.resultJS = this.errorRelativo(values.input1, values.input2);
     }
-    if (this.data.title === 'Decimales Correctos'){
+    if (this.data.title === 'Correct decimals'){
       this.resultJS = this.decimalesCorrectos(values.input1, values.input2, values.input3);
     }
-    if (this.data.title === 'Búsquedas'){
+    if (this.data.title === 'Incremental searches'){
       this.resultJS = this.busquedas(values.input1, values.input2, values.input3, values.input4);
     }
     if (this.data.title === 'Bisección'){
       this.resultJS = this.biseccion(values.input1, values.input2, values.input3, values.input4, values.input5);
     }
-    if (this.data.title === 'Regla Falsa'){
+    if (this.data.title === 'False rule'){
       this.resultJS = this.reglaFalsa(values.input1, values.input2, values.input3, values.input4, values.input5);
     }
-    if (this.data.title === 'Punto fijo'){
+    if (this.data.title === 'Fixed point'){
       this.resultJS = this.puntofijo(values.input1, values.input2, values.input3, values.input4);
     }
     if (this.data.title === 'Newton'){
       this.resultJS = this.newton(values.input1, values.input2, values.input3, values.input4);
     }
-    if (this.data.title === 'Secante'){
+    if (this.data.title === 'Secant'){
       this.resultJS = this.secante(values.input1, values.input2, values.input3, values.input4, values.input5);
     }
-    if (this.data.title === 'Raices multiples'){
+    if (this.data.title === 'Multiple roots'){
       this.resultJS = this.raicesmlt(values.input1, values.input2, values.input3, values.input4);
     }
-    if (this.data.title === 'Gaussiana simple'){
+    if (this.data.title === 'Simple Gaussian elimination'){
       this.resultJS = this.gausspl(values.input1, values.input2);
     }
-    if (this.data.title === 'Gaussiana con pivoteo parcial'){
+    if (this.data.title === 'Gaussian elimination with partial pivot'){
       this.resultJS = this.gausspar(values.input1, values.input2);
     }
-    if (this.data.title === 'Gaussiana con pivoteo total'){
+    if (this.data.title === 'Gaussian elimination with complete pivot'){
       this.resultJS = this.gausstot(values.input1, values.input2);
     }
-    if (this.data.title === 'LU con eliminación gaussiana simple'){
+    if (this.data.title === 'LU factorization with simple Gaussian elimination'){
       this.resultJS = this.lusimpl(values.input1, values.input2);
     }
     if (this.data.title === 'Jacobi'){
@@ -82,7 +82,7 @@ export class CardComponent implements OnInit {
     if (this.data.title === 'Vandermonde'){
       this.resultJS = this.vandermonde(values.input1, values.input2);
     }
-    if (this.data.title === 'Diferencias divididas'){
+    if (this.data.title === 'Divided differences'){
       this.resultJS = this.difdivididas(values.input1, values.input2);
     }
     if (this.data.title === 'Splines'){
@@ -489,22 +489,25 @@ export class CardComponent implements OnInit {
     const sep = matrixI.split(';');
     const sep2 = [];
     const c = vectorC.split(';');
-    for (let i = 0; i < sep.length; i++) {
-      sep2.push(sep[i].split(','));
-      sep2[i].push(c[i]);
+
+    for (let h = 0; h < sep.length; h++) {
+      sep2.push(sep[h].split(','));
+      sep2[h].push(c[h]);
     }
 
-    /* for (let i = 0; i < sep2.length; i++) {
-      for (let j = 0; j < sep[i].length - 1; j++) {
+    // tslint:disable-next-line:prefer-for-of
+    for (let i = 0; i < sep2.length; i++) {
+      for (let j = 0; j < sep2[i].length; j++) {
+        console.log(sep2[i][j]);
         sep2[i][j] = parseFloat(sep2[i][j]);
       }
-    } */
+    }
 
     return sep2;
   }
 
   getErrorMessage(): string {
-    return 'Los valores son obligatorios y no pueden ser mayores a 8 cifras';
+    return ' ';
   }
 
   createFormValidation(length: number): void {

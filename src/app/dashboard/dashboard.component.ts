@@ -14,137 +14,118 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.data = [{
-      title: 'Error Absoluto',
-      subtitle: 'Cálculo del error absoluto',
-      // urlImage: 'https://www.calculadoraconversor.com/wp-content/uploads/2017/10/calculadora-error-absoluto.jpg',
-      description: 'Es la diferencia que existe entre el valor verdadero y el valor aproximado',
-      input: ['Valor real', 'Valor aproximado']
+      title: 'Absolute error',
+      subtitle: 'Calculation of the absolute error',
+      description: 'It is the difference that exists between the real value and the approximate value',
+      input: ['Real Value', 'Approximate value']
     },
     {
-      title: 'Error Relativo',
-      subtitle: 'Cálculo del error relativo',
-      // urlImage: 'https://pbs.twimg.com/profile_images/2388108473/180px-DaConch_400x400.jpg',
-      description: 'Expresa el error como proporción del valor verdadero, el error relativo es adimencional por ende suele precentarse en forma de porcentaje',
-      input: ['Error', 'Valor aproximado']
+      title: 'Relative error',
+      subtitle: 'Calculation of the relative error',
+      description: 'It is the error as a proportion of the real value, the relative error is dimensionless, so it is usually presented as a percentage',
+      input: ['Real Value', 'Approximate value']
     },
     {
-      title: 'Decimales Correctos',
-      subtitle: 'Cálculo de los decimales correctos de un número',
-      // urlImage: 'https://pbs.twimg.com/profile_images/2388108473/180px-DaConch_400x400.jpg',
-      description: 'Se refiere a la cantidad de decimales correctos que contiene un número, (1 es verdadero, 2 es falso)',
-      input: ['X', 'X aproximado', 'Decimales correctos']
+      title: 'Correct decimals',
+      subtitle: 'Calculation of the correct decimals of a number.',
+      description: 'It is the number of correct decimal positions that a number contains (1 is true, 2 is false))',
+      input: ['X', 'X approximate', 'Correct decimals']
     },
     {
-      title: 'Búsquedas',
-      subtitle: 'Método de búsquedas incrementales',
-      // urlImage: 'https://pbs.twimg.com/profile_images/2388108473/180px-DaConch_400x400.jpg',
-      description: 'Este programa encuentra un intervalo donde f(x) tiene cambio de signo usando el método de búsquedas incrementales',
-      input: ['Función continua f(x)', 'Punto inicial', 'Incremento delta ∆x', 'Máximo de interacciones']
+      title: 'Incremental searches',
+      subtitle: 'Incremental search method',
+      description: 'This program finds an interval where f(x) has a change of sign using the incremental searches method',
+      input: ['Continuous function f(x)', 'Starting point', 'Delta increment ∆x', 'Maximum interactions']
     },
     {
-      title: 'Bisección',
-      subtitle: 'Método de la bisección',
-      // urlImage: 'https://pbs.twimg.com/profile_images/2388108473/180px-DaConch_400x400.jpg',
-      description: 'Este programa halla la solución a la ecuación f(x)=0 en el intervalo [a,b] usando el método de la bisección',
-      input: ['Función continua f(x)', 'Inicio del intervalo', 'Final del intervalo', 'Tolerancia', 'Máximo de iteraciones']
+      title: 'Bisection',
+      subtitle: 'Bisection method',
+      description: 'This program finds the solution to the equation f(x) = 0 on the interval [a, b] using the bisection method',
+      input: ['Continuous function f(x)', 'Interval start', 'Interval end', 'Tolerance', 'Maximum interactions']
     },
     {
-      title: 'Regla Falsa',
-      subtitle: 'Método de la regla falsa',
-      // urlImage: 'https://pbs.twimg.com/profile_images/2388108473/180px-DaConch_400x400.jpg',
-      description: 'Este programa halla la solución a la ecuación f(x)=0 en el intervalo [a,b] usando el método de la regla falsa',
-      input: ['Función continua f(x)', 'Inicio del intervalo', 'Final del intervalo', 'Tolerancia', 'Máximo de iteraciones']
+      title: 'False rule',
+      subtitle: 'False rule method',
+      description: 'This program finds the solution to the equation f(x) = 0 on the interval [a, b] using the false rule method',
+      input: ['Continuous function f(x)', 'Interval start', 'Interval end', 'Tolerance', 'Maximum interactions']
     },
       {
-        title: 'Punto fijo',
-        subtitle: 'Método de punto fijo',
-        // urlImage: 'https://pbs.twimg.com/profile_images/2388108473/180px-DaConch_400x400.jpg',
-        description: 'Este programa halla la solución a la ecuación f(x)=0 resolviendo el problema análogo x=g(x) usando el método de punto fijo',
-        input: ['Función continua f(x)', 'Aproximación inicial', 'Tolerancia', 'Máximo de iteraciones']
+        title: 'Fixed point',
+        subtitle: 'Fixed point method',
+        description: 'This program finds the solution to the equation f(x) = 0 by solving the analogous problem x = g(x) using the fixed point method',
+        input: ['Continuous function f(x)', 'Initial approximation', 'Tolerance', 'Maximum interactions']
       },
       {
         title: 'Newton',
-        subtitle: 'Método de Newton',
-        // urlImage: 'https://pbs.twimg.com/profile_images/2388108473/180px-DaConch_400x400.jpg',
-        description: 'Este programa halla la solución a la ecuación f(x)=0 usando el método de Newton',
-        input: ['Función continua f(x)', 'Aproximación inicial', 'Tolerancia', 'Máximo de iteraciones']
+        subtitle: 'Newton\'s method',
+        description: 'This program finds the solution to the equation f(x) = 0 using Newton\'s method',
+        input: ['Continuous function f(x)', 'Initial approximation', 'Tolerance', 'Maximum interactions']
       },
       {
-        title: 'Secante',
-        subtitle: 'Método de la secante',
-        // urlImage: 'https://pbs.twimg.com/profile_images/2388108473/180px-DaConch_400x400.jpg',
-        description: 'Este programa halla la solución a la ecuación f(x)=0 usando el método de la secante',
-        input: ['Función continua f(x)', 'Aproximación inicial', 'Aproximación final', 'Tolerancia', 'Máximo de iteraciones']
+        title: 'Secant',
+        subtitle: 'Secant method',
+        description: 'This program finds the solution to the equation f(x) = 0 using the secant method',
+        input: ['Continuous function f(x)', 'Initial approximation', 'Final approximation', 'Tolerance', 'Maximum interactions']
       },
       {
-        title: 'Raices multiples',
-        subtitle: 'Método de las raices multiples',
-        // urlImage: 'https://pbs.twimg.com/profile_images/2388108473/180px-DaConch_400x400.jpg',
-        description: 'Este programa halla la solución a la ecuación f(x)=0 usando el método de raíces múltiples',
-        input: ['Función continua f(x)', 'Aproximación inicial', 'Tolerancia', 'Máximo de iteraciones']
+        title: 'Multiple roots',
+        subtitle: 'Multiple roots method',
+        description: 'This program finds the solution to the equation f(x) = 0 using the multiple roots method',
+        input: ['Continuous function f(x)', 'Initial approximation', 'Tolerance', 'Maximum interactions']
       },
       {
-        title: 'Gaussiana simple',
-        subtitle: 'Método de eliminación gaussiana simple',
-        // urlImage: 'https://pbs.twimg.com/profile_images/2388108473/180px-DaConch_400x400.jpg',
-        description: 'Este programa halla la solución al sistema Ax=b usando el método de eliminación gaussiana simple',
-        input: ['Matrix invertible A', 'Vector constante b']
+        title: 'Simple Gaussian elimination',
+        subtitle: 'Simple Gaussian elimination method',
+        description: 'This program finds the solution to the system Ax = b using the simple Gaussian elimination method',
+        input: ['Invertible matrix A', 'Constant vector b']
       },
       {
-        title: 'Gaussiana con pivoteo parcial',
-        subtitle: 'Método de eliminación gaussiana con pivoteo parcial',
-        // urlImage: 'https://pbs.twimg.com/profile_images/2388108473/180px-DaConch_400x400.jpg',
-        description: 'Este programa halla la solución al sistema Ax=b usando el método de eliminación gaussiana con pivoteo parcial',
-        input: ['Matrix invertible A', 'Vector constante b']
+        title: 'Gaussian elimination with partial pivot',
+        subtitle: 'Gaussian elimination method with partial pivot',
+        description: 'This program finds the solution to the system Ax = b using the Gaussian elimination method with partial pivot',
+        input: ['Invertible matrix A', 'Constant vector b']
       },
       {
-        title: 'Gaussiana con pivoteo total',
-        subtitle: 'Método de eliminación gaussiana con pivoteo total',
-        // urlImage: 'https://pbs.twimg.com/profile_images/2388108473/180px-DaConch_400x400.jpg',
-        description: 'Este programa halla la solución al sistema Ax=b usando el método de eliminación gaussiana con pivoteo total',
-        input: ['Matrix invertible A', 'Vector constante b']
+        title: 'Gaussian elimination with complete pivot',
+        subtitle: 'Gaussian elimination method with complete pivot',
+        description: 'This program finds the solution to the system Ax = b using the Gaussian elimination method with complete pivot',
+        input: ['Invertible matrix A', 'Constant vector b']
       },
       {
-        title: 'LU con eliminación gaussiana simple',
-        subtitle: 'Método de factorización LU con eliminación gaussiana simple',
-        // urlImage: 'https://pbs.twimg.com/profile_images/2388108473/180px-DaConch_400x400.jpg',
-        description: 'Este programa halla la solución al sistema Ax=b y la factorización LU de A usando el método de factorización LU con eliminación gaussiana simple',
-        input: ['Matrix invertible A', 'Vector constante b']
+        title: 'LU factorization with simple Gaussian elimination',
+        subtitle: 'LU factorization method with simple Gaussian elimination',
+        description: 'This program finds the solution to the system Ax = b and the LU factorization of A using the LU factorization method with simple Gaussian elimination',
+        input: ['Invertible matrix A', 'Constant vector b']
       },
       {
         title: 'Jacobi',
-        subtitle: 'Método de Jacobi',
-        // urlImage: 'https://pbs.twimg.com/profile_images/2388108473/180px-DaConch_400x400.jpg',
-        description: 'Este programa halla la solución al sistema Ax=b usando el método de Jacobi',
-        input: ['Matrix invertible A', 'Vector constante b', 'Aproximación inicial', 'Tolerancia', 'Máximo de iteraciones']
+        subtitle: 'Jacobi method',
+        description: 'This program finds the solution to the system Ax = b using the Jacobi method',
+        input: ['Invertible matrix A', 'Constant vector b', 'Initial approximation', 'Tolerance', 'Maximum interactions']
       },
       {
         title: 'Gauss-Seidel',
-        subtitle: 'Método de Gauss-Seidel',
-        // urlImage: 'https://pbs.twimg.com/profile_images/2388108473/180px-DaConch_400x400.jpg',
-        description: 'Este programa halla la solución al sistema Ax=b usando el método de Gauss-Seidel',
-        input: ['Matrix invertible A', 'Vector constante b', 'Aproximación inicial', 'Tolerancia', 'Máximo de iteraciones']
+        subtitle: 'Gauss-Seidel method',
+        description: 'This program finds the solution to the system Ax = b using the Gauss-Seidel method',
+        input: ['Invertible matrix A', 'Constant vector b', 'Initial approximation', 'Tolerance', 'Maximum interactions']
       },
       {
         title: 'Vandermonde',
-        subtitle: 'Método de Vandermonde',
-        // urlImage: 'https://pbs.twimg.com/profile_images/2388108473/180px-DaConch_400x400.jpg',
-        description: 'Este programa halla el polinomio interpolante de los datos dados usando el método de Vandermonde',
-        input: ['Abscisas X', 'Ordenadas Y']
+        subtitle: 'Vandermonde method',
+        description: 'This program finds the interpolating polynomial of the given data using the Vandermonde method',
+        input: ['Abscissas X', 'Ordinates Y']
       },
       {
-        title: 'Diferencias divididas',
-        subtitle: 'Método de diferencias divididas',
-        // urlImage: 'https://pbs.twimg.com/profile_images/2388108473/180px-DaConch_400x400.jpg',
-        description: 'Este programa halla el polinomio interpolante de los datos dados usando el método de diferencias divididas',
-        input: ['Abscisas X', 'Ordenadas Y']
+        title: 'Divided differences',
+        subtitle: 'Divided differences method',
+        description: 'This program finds the interpolating polynomial of the given data using the divided differences method',
+        input: ['Abscissas X', 'Ordinates Y']
       },
       {
         title: 'Splines',
-        subtitle: 'Método de trazadores cuadráticos',
-        // urlImage: 'https://pbs.twimg.com/profile_images/2388108473/180px-DaConch_400x400.jpg',
-        description: 'Este programa halla el spline cuadrático que interpola los datos dados usando el método de trazadores cuadráticos',
-        input: ['Abscisas X', 'Ordenadas Y']
+        subtitle: 'Quadratic splines method',
+        description: 'This program finds the quadratic spline that interpolates the given data using the quadratic splines method',
+        input: ['Abscissas X', 'Ordinates Y']
       }
     ];
   }

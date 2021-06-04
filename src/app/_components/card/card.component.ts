@@ -465,7 +465,26 @@ export class CardComponent implements OnInit {
     return 'Pendiente';
   }
 
-  jacobi(matrixI: string, vectorC: string, x0: string, tol: string, nMax: string): string {
+  jacobi(matrixI: string, vectorC: string, x0P: string, tolP: string, nMaxP: string): string {
+    const x0 = parseFloat(x0P);
+    const tol = parseFloat(tolP);
+    const nMax = parseFloat(nMaxP);
+
+    const param = {
+      A: matrixI,
+      b: vectorC,
+      N: nMaxP,
+      x: x0
+    };
+    this.metodosNum.jacobis(param).subscribe(
+      res => {
+        this.resultPython = String(res.result);
+      },
+      err => {
+        console.log(err);
+      }
+    );
+
     return 'Pendiente';
   }
 
